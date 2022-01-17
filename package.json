@@ -1,12 +1,37 @@
 {
   "name": "postgre-sqlf-frontend",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "GUI for PostgreSQLf",
+  "contributors": [
+    {
+      "name": "Carlos Parra",
+      "email": "parra@carlosparra.site",
+      "url": "https://carlosparra.site/"
+    },
+    {
+      "name": "José Mendoza",
+      "email": "jomendoza18@gmail.com"
+    }
+  ],
+  "main": "app/main.js",
   "scripts": {
+    "postinstall": "electron-builder install-app-deps",
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "npm-run-all -p electron:serve ng:serve",
+    "build": "npm run electron:serve-tsc && ng build --base-href ./",
+    "build:dev": "npm run build -- -c dev",
+    "build:prod": "npm run build -- -c production",
+    "ng:serve": "ng serve -c web -o",
+    "electron": "electron",
+    "electron:serve-tsc": "tsc -p tsconfig.serve.json",
+    "electron:serve": "wait-on tcp:4200 && npm run electron:serve-tsc && electron . --serve",
+    "electron:local": "npm run build:prod && electron .",
+    "electron:build": "npm run build:prod && electron-builder build --publish=never",
+    "test": "ng test --watch=false",
+    "test:watch": "ng test",
+    "e2e": "npm run build:prod && playwright test -c e2e/playwright.config.ts e2e/",
+    "e2e:show-trace": "playwright show-trace e2e/tracing/trace.zip",
+    "version": "conventional-changelog -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
   "private": true,
   "dependencies": {
@@ -28,12 +53,17 @@
     "@angular/compiler-cli": "~13.0.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "electron": "^16.0.7",
+    "electron-reload": "^2.0.0-alpha.1",
+    "npm-run-all": "^4.1.5",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
+    "electron-builder": "^22.14.5",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "wait-on": "^6.0.0",
     "typescript": "~4.4.3"
   }
 }

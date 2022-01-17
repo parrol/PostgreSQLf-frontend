@@ -1,27 +1,82 @@
 # PostgreSQLfFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
+<div id="built-with"></div>
+
+### Built With
+
+* [Angular](https://angular.io/) 13.0.1
+* [Electron](https://www.electronjs.org/) 16.0.7
+
+
+<div id="getting-started"></div>
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these steps.
+
+<div id="prerequisites"></div>
+
+### Prerequisites
+
+npm is needed to install the dependecies.
+* npm
+  ```sh
+  npm install npm@latest -g
+
+  ```
+
+<div id="installation"></div>
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/parrol/PostgreSQLf-frontend.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
 
 ## Development server
+<hr>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To open both web an local (platform specific executable) apps run:
+   ```sh
+   npm start
+   ```
+### Angular
+To open web app run:
+   ```sh
+   npm run ng:serve
+   ```
+### Electron
+To open local app run:
+   ```sh
+   npm run electron:serve
+   ```
 
 ## Build
+<hr>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Angular
+To build web app run:
+   ```sh
+   npm run build:prod
+   ```
+   or
 
-## Running unit tests
+   ```sh
+   npm run build:dev
+   ```
+The build artifacts will be stored in the `dist/` directory.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Electron
+To build a local app executable run:
+   ```sh
+   npm run electron:build
+   ```
+The build artifacts and executables will be stored in the `release/` directory.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
